@@ -1,9 +1,9 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-import unittest
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -17,7 +17,9 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self): 
-        ...
+        # Maria decidiu utilizar o novo app TODO. Ela entra em sua página principal:
+        self.browser.get(self.live_server_url)
+        
         # Quando ela aperta enter, a página atualiza, e mostra a lista
         # "1: Estudar testes funcionais" como um item da lista TODO
         inputbox.send_keys(Keys.ENTER)
@@ -34,7 +36,4 @@ class NewVisitorTest(unittest.TestCase):
         # A página atualiza novamente, e agora mostra ambos os itens na sua lista
         self.check_for_row_in_list_table('1: Estudar testes funcionais')
         self.check_for_row_in_list_table('2: Estudar testes de unidade')
-        ...
-
-if __name__ == '__main__':
-    unittest.main()
+ 
