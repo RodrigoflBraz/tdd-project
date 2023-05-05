@@ -1,0 +1,1 @@
+Testes funcionais são criados a partir do ponto de vista do usuário, já o unitário é criado querendo testar um único comportamento do sistema. Testes funcionais podem testar via caixa preta, já o unitário tem que ser via caixa branca.
